@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🎉 Happy Birthday!</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="confetti"></canvas>
+
+  <!-- Landing / Surprise -->
+  <section class="hero" id="hero">
+    <div class="gift">
+      <div class="box"></div>
+      <div class="lid"></div>
+      <div class="ribbon-vert"></div>
+      <div class="ribbon-horiz"></div>
+    </div>
+    <h1>Tap the gift to open your surprise! 🎁</h1>
+    <div>
+      <img id="giftImage" class="gift-image" 
+           src="https://i.pinimg.com/1200x/c7/fb/99/c7fb99298035514851231e5fa5b1bb18.jpg" 
+           alt="Birthday Gift">
+    </div>
+    <button id="openBtn" class="btn primary">Open Gift</button>
+  </section>
+
+  <div id="aircraft-container"></div>
+
+  <!-- Celebration Scene -->
+  <main class="scene hidden" id="scene">
+    <div class="sky-grad"></div>
+
+    <div class="balloons" aria-hidden="true">
+      <div class="balloon b1"></div>
+      <div class="balloon b2"></div>
+      <div class="balloon b3"></div>
+      <div class="balloon b4"></div>
+      <div class="balloon b5"></div>
+    </div>
+
+    <header class="title">
+      <h2>🎂 Happy Birthday <span id="friendName">Dear Faheem</span>! 🎉</h2>
+      <p class="subtitle">Make a wish and blow out the candles…</p>
+    </header>
+
+    <!-- Cake -->
+    <section class="cake">
+      <div class="plate"></div>
+      <div class="cake-body">
+        <div class="frosting"></div>
+        <div class="drip d1"></div>
+        <div class="drip d2"></div>
+        <div class="drip d3"></div>
+        <div class="sprinkles" aria-hidden="true"></div>
+      </div>
+
+      <div class="candles" id="candles">
+        <!-- 5 candles -->
+        <div class="candle" data-lit="true">
+          <div class="wax"></div>
+          <div class="flame">
+            <span class="flame-core"></span>
+            <span class="glow"></span>
+          </div>
+          <div class="smoke"><span></span><span></span></div>
+        </div>
+        <div class="candle" data-lit="true">
+          <div class="wax"></div>
+          <div class="flame">
+            <span class="flame-core"></span>
+            <span class="glow"></span>
+          </div>
+          <div class="smoke"><span></span><span></span></div>
+        </div>
+        <div class="candle" data-lit="true">
+          <div class="wax"></div>
+          <div class="flame">
+            <span class="flame-core"></span>
+            <span class="glow"></span>
+          </div>
+          <div class="smoke"><span></span><span></span></div>
+        </div>
+        <div class="candle" data-lit="true">
+          <div class="wax"></div>
+          <div class="flame">
+            <span class="flame-core"></span>
+            <span class="glow"></span>
+          </div>
+          <div class="smoke"><span></span><span></span></div>
+        </div>
+        <div class="candle" data-lit="true">
+          <div class="wax"></div>
+          <div class="flame">
+            <span class="flame-core"></span>
+            <span class="glow"></span>
+          </div>
+          <div class="smoke"><span></span><span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Controls -->
+    <section class="controls">
+      <button id="blowBtn" class="btn">Blow (B)</button>
+      <button id="relightBtn" class="btn">Re-light</button>
+      <button id="micBtn" class="btn outline">Enable Microphone Blow</button>
+      <!-- <input id="nameInput" class="name-input"/> -->
+    </section>
+
+    <!-- Hidden wish reveal -->
+    <section class="wish">
+      <p id="wishText" class="typewriter">
+        May your year be full of joy, laughter, and sweet surprises! 💖
+      </p>
+    </section>
+
+    <footer class="footer">
+      <small>Made with 🎈 &amp; 🎵 (optional) — share this surprise!</small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
