@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Mumtaz Taya! 🎉</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --midnight: #241436;
+    --midnight-deep: #170c26;
+    --lavender: #cdb8ef;
+    --gold: #f4c95d;
+    --coral: #ff8b94;
+    --mint: #8fe3cf;
+    --cream: #fdf6ec;
+    --sky-blue: #8ec9ff;
+  }
+
+  *{ box-sizing: border-box; margin:0; padding:0; }
+
+  html,body{
+    background: radial-gradient(ellipse at top, #34204d 0%, var(--midnight) 45%, var(--midnight-deep) 100%);
+    color: var(--cream);
+    font-family: 'Poppins', sans-serif;
+    overflow-x:hidden;
+    min-height: 100%;
+  }
+
+  body{ position:relative; }
+
+  /* ---------- Confetti & balloon canvas layers ---------- */
+  #confetti-canvas{
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    pointer-events:none;
+    z-index: 5;
+  }
+
+  .balloon-field{
+    position: fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:1;
+  }
+
+  .balloon{
+    position:absolute;
+    bottom:-160px;
+    width: 46px;
+    height: 60px;
+    border-radius: 50% 50% 46% 46%;
+    opacity:0.85;
+    animation: floatUp linear infinite;
+    filter: drop-shadow(0 6px 8px rgba(0,0,0,0.25));
+  }
+  .balloon::after{
+    content:'';
+    position:absolute;
+    bottom:-22px;
+    left:50%;
+    width:1px;
+    height:22px;
+    background: rgba(253,246,236,0.35);
+    transform: translateX(-50%);
+  }
+
+  @keyframes floatUp{
+    0%{ transform: translateY(0) translateX(0) rotate(-4deg); }
+    50%{ transform: translateY(-55vh) translateX(30px) rotate(4deg); }
+    100%{ transform: translateY(-115vh) translateX(-10px) rotate(-4deg); }
+  }
+
+  /* ---------- Layout ---------- */
+  .wrap{
+    position:relative;
+    z-index: 10;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: clamp(24px, 6vw, 60px) clamp(18px, 5vw, 40px) 80px;
+    text-align:center;
+  }
+
+  .eyebrow{
+    font-size: clamp(12px, 2.4vw, 14px);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: clamp(20px, 6vh, 44px);
+  }
+
+  h1.title{
+    font-family: 'Baloo 2', sans-serif;
+    font-weight: 800;
+    line-height: 1.05;
+    font-size: clamp(2.6rem, 10vw, 5rem);
+    margin: 10px 0 6px;
+    background: linear-gradient(180deg, var(--cream) 20%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 8px 30px rgba(244,201,93,0.15);
+  }
+
+  .name{
+    display:inline-block;
+    color: var(--coral);
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    background: none;
+    animation: wiggle 3.4s ease-in-out infinite;
+  }
+
+  @keyframes wiggle{
+    0%,100%{ transform: rotate(-2deg); }
+    50%{ transform: rotate(2deg); }
+  }
+
+  .subtitle{
+    font-size: clamp(14px, 3vw, 18px);
+    color: var(--lavender);
+    font-weight:300;
+    max-width: 480px;
+    margin: 0 auto 34px;
+    line-height:1.6;
+  }
+
+  /* ---------- Polaroid photo ---------- */
+  .polaroid{
+    width: min(78vw, 300px);
+    background: var(--cream);
+    padding: 16px 16px 54px;
+    margin: 10px auto 30px;
+    border-radius: 6px;
+    transform: rotate(-4deg);
+    box-shadow: 0 24px 50px rgba(0,0,0,0.45), 0 4px 10px rgba(0,0,0,0.25);
+    position:relative;
+    transition: transform .5s ease;
+  }
+  .polaroid:hover{ transform: rotate(0deg) scale(1.03); }
+
+  .polaroid img{
+    width:100%;
+    display:block;
+    border-radius: 2px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    background: #ddd2f0;
+  }
+
+  .polaroid figcaption{
+    position:absolute;
+    bottom:14px; left:0; right:0;
+    text-align:center;
+    font-family:'Baloo 2', sans-serif;
+    color: var(--midnight);
+    font-size: 15px;
+    font-weight:700;
+  }
+
+  .tape{
+    position:absolute;
+    top:-14px; left:50%;
+    transform: translateX(-50%) rotate(-3deg);
+    width: 90px; height: 26px;
+    background: rgba(255,255,255,0.35);
+    border: 1px solid rgba(255,255,255,0.5);
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    font-family:'Baloo 2', sans-serif;
+    font-size: clamp(15px, 3vw, 17px);
+    font-weight: 700;
+    color: var(--midnight-deep);
+    background: linear-gradient(180deg, var(--gold), #e0a93a);
+    border: none;
+    padding: 14px 30px;
+    border-radius: 999px;
+    cursor:pointer;
+    box-shadow: 0 10px 24px rgba(244,201,93,0.35), inset 0 -3px 0 rgba(0,0,0,0.15);
+    transition: transform .15s ease, box-shadow .15s ease;
+    margin: 6px 8px;
+  }
+  .btn:hover{ transform: translateY(-3px); box-shadow: 0 14px 28px rgba(244,201,93,0.45); }
+  .btn:active{ transform: translateY(0px) scale(0.97); }
+
+  .btn.secondary{
+    background: transparent;
+    color: var(--cream);
+    border: 2px solid var(--lavender);
+    box-shadow:none;
+  }
+  .btn.secondary:hover{ background: rgba(205,184,239,0.12); }
+
+  /* ---------- Wish cards ---------- */
+  .cards{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 54px;
+  }
+  @media (max-width: 560px){
+    .cards{ grid-template-columns: 1fr; }
+  }
+
+  .card{
+    background: rgba(253,246,236,0.05);
+    border: 1px solid rgba(205,184,239,0.18);
+    border-radius: 16px;
+    padding: 22px 16px;
+    backdrop-filter: blur(6px);
+    transition: transform .3s ease, border-color .3s ease;
+  }
+  .card:hover{
+    transform: translateY(-6px);
+    border-color: var(--gold);
+  }
+  .card .emoji{ font-size: 30px; display:block; margin-bottom: 10px; }
+  .card h3{
+    font-family:'Baloo 2', sans-serif;
+    font-size: 17px;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .card p{
+    font-size: 13.5px;
+    color: var(--lavender);
+    line-height:1.5;
+  }
+
+  /* ---------- Cake / candle wish section ---------- */
+  .cake-section{
+    margin-top: 70px;
+  }
+  .cake-section h2{
+    font-family:'Baloo 2', sans-serif;
+    font-size: clamp(1.4rem, 5vw, 2rem);
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+  .cake-section p.hint{
+    color: var(--lavender);
+    font-size: 13.5px;
+    margin-bottom: 28px;
+  }
+
+  .cake{
+    position:relative;
+    width: 180px;
+    margin: 0 auto 30px;
+  }
+  .flame{
+    width: 10px; height: 16px;
+    background: radial-gradient(circle at 50% 30%, #fff6c8, var(--gold) 60%, #e0752c 100%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    margin: 0 auto;
+    transform-origin: bottom center;
+    animation: flicker 1.4s ease-in-out infinite;
+    transition: opacity .3s ease, transform .3s ease;
+  }
+  @keyframes flicker{
+    0%,100%{ transform: scale(1) rotate(-2deg); }
+    50%{ transform: scale(1.15) rotate(2deg); }
+  }
+  .candle{
+    width: 8px; height: 34px;
+    background: repeating-linear-gradient(180deg, var(--coral) 0 6px, var(--cream) 6px 12px);
+    margin: 0 auto;
+    border-radius: 2px;
+  }
+  .cake-body{
+    width: 180px; height: 90px;
+    background: linear-gradient(180deg, #ffe1e6, var(--coral));
+    border-radius: 14px 14px 30px 30px;
+    position:relative;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.35);
+  }
+  .cake-body::before{
+    content:'';
+    position:absolute;
+    top:-14px; left:0; right:0;
+    height: 24px;
+    background: var(--cream);
+    border-radius: 50%;
+  }
+  .cake-layer{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height: 34px;
+    background: linear-gradient(180deg, #ffd3da, #ff9aa2);
+    border-radius: 0 0 30px 30px;
+  }
+
+  .blown small{
+    display:block;
+    margin-top: 10px;
+    color: var(--mint);
+    font-size: 13px;
+    font-weight:600;
+    opacity:0;
+    transition: opacity .4s ease;
+  }
+  .blown.show small{ opacity:1; }
+
+  footer{
+    margin-top: 60px;
+    color: rgba(205,184,239,0.55);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  ::selection{ background: var(--coral); color: var(--midnight-deep); }
+</style>
+</head>
+<body>
+
+<canvas id="confetti-canvas"></canvas>
+<div class="balloon-field" id="balloonField"></div>
+
+<div class="wrap">
+  <div class="eyebrow">✦ a very special day ✦</div>
+  <h1 class="title">Happy Birthday,<br><span class="name">Mumtaz Taya</span>!</h1>
+  <p class="subtitle">Another year of your wonderful, wild, one-of-a-kind self. Here's to cake, chaos, and everything good headed your way. 🎂</p>
+
+  <figure class="polaroid">
+    <span class="tape"></span>
+    <img src="taya.png" alt="Taya" onerror="this.onerror=null; this.src=''; this.alt='📷 Add taya.png next to this file to see the photo here';">
+    <figcaption>Mumtaz Taya ✨</figcaption>
+  </figure>
+
+  <div>
+    <button class="btn" id="popBtn">🎉 Pop the Confetti</button>
+    <button class="btn secondary" id="scrollBtn">Make a wish ↓</button>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <span class="emoji">🎈</span>
+      <h3>Celebrate loud</h3>
+      <p>You deserve balloons, cake, and everyone's undivided attention today.</p>
+    </div>
+    <div class="card">
+      <span class="emoji">💛</span>
+      <h3>Be loved</h3>
+      <p>A little reminder that you're appreciated more than you probably realize.</p>
+    </div>
+    <div class="card">
+      <span class="emoji">🌟</span>
+      <h3>Shine on</h3>
+      <p>Your wishes come true, and this new year treat you exactly as well as you deserve."</p>
+    </div>
+  </div>
+
+  <div class="cake-section" id="cakeSection">
+    <h2>Make a wish, Mumtaz Taya</h2>
+    <p class="hint">tap the candle to blow it out</p>
+    <div class="cake" id="cakeWrap">
+      <div class="candle">
+        <div class="flame" id="flame"></div>
+      </div>
+      <div class="cake-body">
+        <div class="cake-layer"></div>
+      </div>
+    </div>
+    <div class="blown" id="blownMsg"><small>🌠 wish made — it's already coming true</small></div>
+  </div>
+
+  <footer>May God Bless You With Everything, Best Wishes Mumtaz Taya</footer>
+</div>
+
+<script>
+/* ---------------- Confetti engine ---------------- */
+const canvas = document.getElementById('confetti-canvas');
+const ctx = canvas.getContext('2d');
+let W, H;
+function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+resize();
+window.addEventListener('resize', resize);
+
+const colors = ['#f4c95d', '#ff8b94', '#8fe3cf', '#8ec9ff', '#cdb8ef', '#fdf6ec'];
+let pieces = [];
+
+function spawnConfetti(count, originX, originY){
+  for(let i=0;i<count;i++){
+    pieces.push({
+      x: originX ?? Math.random()*W,
+      y: originY ?? -20,
+      w: 6 + Math.random()*6,
+      h: 8 + Math.random()*8,
+      color: colors[Math.floor(Math.random()*colors.length)],
+      speedY: 2 + Math.random()*3.5,
+      speedX: (Math.random()-0.5)*4,
+      rot: Math.random()*360,
+      rotSpeed: (Math.random()-0.5)*10,
+      life: 0,
+      maxLife: 300 + Math.random()*200
+    });
+  }
+}
+
+function ambientConfettiLoop(){
+  if(Math.random() < 0.35) spawnConfetti(1);
+}
+
+function tick(){
+  ctx.clearRect(0,0,W,H);
+  pieces.forEach(p=>{
+    p.x += p.speedX;
+    p.y += p.speedY;
+    p.rot += p.rotSpeed;
+    p.life++;
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.rot * Math.PI/180);
+    ctx.fillStyle = p.color;
+    ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+    ctx.restore();
+  });
+  pieces = pieces.filter(p => p.y < H + 30 && p.life < p.maxLife);
+  ambientConfettiLoop();
+  requestAnimationFrame(tick);
+}
+tick();
+
+document.getElementById('popBtn').addEventListener('click', (e)=>{
+  const rect = e.target.getBoundingClientRect();
+  spawnConfetti(120, rect.left + rect.width/2, rect.top);
+});
+
+document.getElementById('scrollBtn').addEventListener('click', ()=>{
+  document.getElementById('cakeSection').scrollIntoView({behavior:'smooth', block:'center'});
+});
+
+/* ---------------- Balloons ---------------- */
+const balloonField = document.getElementById('balloonField');
+const balloonColors = ['#ff8b94', '#f4c95d', '#8fe3cf', '#8ec9ff', '#cdb8ef'];
+function makeBalloon(){
+  const b = document.createElement('div');
+  b.className = 'balloon';
+  const color = balloonColors[Math.floor(Math.random()*balloonColors.length)];
+  b.style.background = `radial-gradient(circle at 30% 30%, #ffffff55, ${color})`;
+  b.style.left = Math.random()*100 + 'vw';
+  const duration = 10 + Math.random()*10;
+  b.style.animationDuration = duration + 's';
+  b.style.animationDelay = (Math.random()*6) + 's';
+  balloonField.appendChild(b);
+  setTimeout(()=> b.remove(), (duration+6)*1000);
+}
+setInterval(makeBalloon, 1400);
+for(let i=0;i<6;i++) setTimeout(makeBalloon, i*300);
+
+/* ---------------- Candle blow ---------------- */
+const flame = document.getElementById('flame');
+const blownMsg = document.getElementById('blownMsg');
+document.getElementById('cakeWrap').addEventListener('click', ()=>{
+  if(flame.style.opacity === '0') return;
+  flame.style.opacity = '0';
+  flame.style.transform = 'scaleY(0)';
+  blownMsg.classList.add('show');
+  const rect = document.getElementById('cakeWrap').getBoundingClientRect();
+  spawnConfetti(160, rect.left + rect.width/2, rect.top);
+});
+</script>
+
+</body>
+</html>
